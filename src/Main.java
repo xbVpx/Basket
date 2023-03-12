@@ -25,17 +25,10 @@ public class Main {
         } catch (RuntimeException exception) {
             System.out.println("Введено не верное значение!");
         }
-        System.out.println("Итого " + basket.sumProd() + " руб");
+        System.out.println("Итого " + basket.sumProd() + " руб") ;
 
-        File textFile = new File("list.txt");
-        try {
-            if (textFile.createNewFile())
-                System.out.println("Файл был создан");
+        basket.saveBin(new File("basket.bin"));
+        Basket.loadFromBinFile(new File("basket.bin"));
 
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        basket.saveTxt(textFile);
-        Basket.loadFromTxtFile(textFile);
     }
 }
